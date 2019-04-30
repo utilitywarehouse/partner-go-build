@@ -1,0 +1,11 @@
+FROM alpine:3.9
+
+ARG EXECUTABLE
+
+ENV APP=${EXECUTABLE}
+
+RUN apk add --no-cache ca-certificates tzdata
+ADD ./bin/${EXECUTABLE} /bin/${EXECUTABLE}
+ADD ./project/static /
+
+ENTRYPOINT exec ${APP}
