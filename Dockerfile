@@ -7,6 +7,8 @@ ENV DOCKER_VERSION="18.09.5" \
     VALIDATE_PROTOBUF_VERSION="0.0.14" \
     VALIDATORS_PROTOBUF_VERSION="1f388280e944c97cc59c75d8c84a704097d1f1d6" \
     UWPARTNER_PROTOBUF_VERSION="de4552500027969912fd801dcc5269a153b3fffe" \
+    GRPC_GATEWAY_PROTOBUF_VERSION="1.9.0" \
+    MOCKGEN_VERSION="1.3.1" \
     GOLANGCI_LINT_VERSION="1.16.0"
 
 ## Dependencies
@@ -47,6 +49,18 @@ RUN GO111MODULE=on go get \
 RUN GO111MODULE=on go get \
     github.com/utilitywarehouse/protoc-gen-uwpartner@${UWPARTNER_PROTOBUF_VERSION} \
     && mv /go/bin/protoc-gen-* /usr/local/bin/
+
+## `protoc-gen-grpc-gateway` binary
+## `protoc-gen-swagger` binary
+RUN GO111MODULE=on go get \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v${GRPC_GATEWAY_PROTOBUF_VERSION} \
+    github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v${GRPC_GATEWAY_PROTOBUF_VERSION} \
+    && mv /go/bin/protoc-gen-* /usr/local/bin/
+
+# `mockgen` binary
+RUN GO111MODULE=on go get \
+    github.com/golang/mock/mockgen@v${MOCKGEN_VERSION} \
+    && mv /go/bin/mockgen /usr/local/bin/
 
 ## `golangci-lint` binary
 # Golangci Lint

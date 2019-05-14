@@ -18,7 +18,10 @@ docker pull quay.io/utilitywarehouse/partner-go-build
 | [gogo/protobuf](https://github.com/gogo/protobuf) | 1.2.1 | protoc-gen-gogoslick |
 | [envoyproxy/protoc-gen-validate](github.com/envoyproxy/protoc-gen-validate) | 0.0.14 | protoc-gen-validate |
 | [mwitkow/protoc-gen-govalidators](github.com/mwitkow/go-proto-validators) | 1f388280e944c97cc59c75d8c84a704097d1f1d6 | protoc-gen-govalidators |
-| [utilitywarehouse/protoc-gen-uwpartner]() | de4552500027969912fd801dcc5269a153b3fffe | protoc-gen-uwpartner |
+| [utilitywarehouse/protoc-gen-uwpartner](github.com/utilitywarehouse/protoc-gen-uwpartner) | de4552500027969912fd801dcc5269a153b3fffe | protoc-gen-uwpartner |
+| [grpc-gateway/protoc-gen-grpc-gateway](github.com/grpc-ecosystem/grpc-gateway) |  1.9.0 | protoc-gen-grpc-gateway |
+| [grpc-gateway/protoc-gen-swagger](github.com/grpc-ecosystem/grpc-gateway) |  1.9.0 | protoc-gen-swagger |
+| [golang/mockgen](github.com/golang/mock) | 1.3.1 | mockgen |
 | [golangci-lint](https://github.com/golangci/golangci-lint) | 1.16.0 | golangci-lint |
 
 ## Building
