@@ -2,13 +2,24 @@
 
 Base Docker image that contains all the necessary binaries for building Go services.
 
-## Using
+## Usage
 
 We use [Quay](https://quay.io) to host the publically accessible image.
 
 ```
 docker pull quay.io/utilitywarehouse/partner-go-build
 ```
+
+Locally you can make sure you're using the same version, without the need to install the binary
+
+```
+docker run -t -v "$(PWD):/build" quay.io/utilitywarehouse/partner-go-build \
+  protoc -I=pb \
+  --gogoslick_out=Mgoogle/protobuf/any.proto=github.com/gogo/protobuf/types,Mgoogle/protobuf/timestamp.proto=github.com/gogo/protobuf/types,plugins=grpc,import_path=pb:pb \
+  pb/*.proto
+```
+
+## Tools
 
 | Name | Version | Binaries |
 | --- | --- | --- |
