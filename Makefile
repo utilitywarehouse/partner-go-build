@@ -19,6 +19,7 @@ ifndef APP_DESCRIPTION
 $(error APP_DESCRIPTION is not set in the app.mk file)
 endif
 
+GIT_SHA1 := $(shell cd project && git rev-parse HEAD)
 GIT_SUMMARY := $(shell cd project && git describe --tags --dirty --always)
 GIT_BRANCH := $(shell cd project && git rev-parse --abbrev-ref HEAD)
 BUILD_STAMP := $(shell date -u '+%Y-%m-%dT%H:%M:%S%z')
@@ -84,12 +85,12 @@ build-all: build-app build-commands
 docker_commands = $(foreach source,$(cmd_sources),$(subst /,,$(subst ./project/cmd/,docker-build-cmd-$(MAIN_IMAGE_NAME)-,$(source))))
 
 define docker-build
-	docker build -f Dockerfile.project -t $(DOCKER_BASE_NAME)/$(image_name):$(CIRCLE_SHA1) . --build-arg EXECUTABLE=$(image_name)
+	docker build -f Dockerfile.project -t $(DOCKER_BASE_NAME)/$(image_name):$(GIT_SHA1) . --build-arg EXECUTABLE=$(image_name)
 endef
 
 docker-build-app: ## build docker image for main app
 ifneq ("$(wildcard project/main.go)","")
-	docker build -f Dockerfile.project -t $(DOCKER_BASE_NAME)/$(MAIN_IMAGE_NAME):$(CIRCLE_SHA1) . --build-arg EXECUTABLE=$(MAIN_IMAGE_NAME)
+	docker build -f Dockerfile.project -t $(DOCKER_BASE_NAME)/$(MAIN_IMAGE_NAME):$(GIT_SHA1) . --build-arg EXECUTABLE=$(MAIN_IMAGE_NAME)
 endif
 
 docker-build-cmd-%: image_name = $(subst docker-build-cmd-,,$@)
@@ -111,7 +112,7 @@ image_sources = $(sort $(shell find ./bin -mindepth 1 -maxdepth 1 -exec basename
 images = $(foreach image,$(image_sources),docker-push-image-$(image))
 
 define docker-push-image
-	docker tag $(DOCKER_BASE_NAME)/$(image_name):$(CIRCLE_SHA1) $(DOCKER_BASE_NAME)/$(image_name):$(DOCKER_TAG)
+	docker tag $(DOCKER_BASE_NAME)/$(image_name):$(GIT_SHA1) $(DOCKER_BASE_NAME)/$(image_name):$(DOCKER_TAG)
 	docker push $(DOCKER_BASE_NAME)/$(image_name)
 endef
 
