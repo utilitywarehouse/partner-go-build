@@ -33,7 +33,7 @@ docker run -t -v "$(PWD):/build" quay.io/utilitywarehouse/partner-go-build \
 | [grpc-gateway/protoc-gen-grpc-gateway](github.com/grpc-ecosystem/grpc-gateway) |  1.9.0 | protoc-gen-grpc-gateway |
 | [grpc-gateway/protoc-gen-swagger](github.com/grpc-ecosystem/grpc-gateway) |  1.9.0 | protoc-gen-swagger |
 | [golang/mockgen](github.com/golang/mock) | 1.3.1 | mockgen |
-| [golangci-lint](https://github.com/golangci/golangci-lint) | 1.16.0 | golangci-lint |
+| [golangci-lint](https://github.com/golangci/golangci-lint) | 1.17.1 | golangci-lint |
 
 ## Building
 
