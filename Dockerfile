@@ -4,10 +4,9 @@ ENV DOCKER_VERSION="18.09.5" \
     PROTOBUF_VERSION="3.7.0" \
     GOLANG_PROTOBUF_VERSION="1.3.1" \
     GOGO_PROTOBUF_VERSION="1.2.1" \
-    VALIDATE_PROTOBUF_VERSION="0.0.14" \
     VALIDATORS_PROTOBUF_VERSION="1f388280e944c97cc59c75d8c84a704097d1f1d6" \
     UWPARTNER_PROTOBUF_VERSION="de4552500027969912fd801dcc5269a153b3fffe" \
-    GRPC_GATEWAY_PROTOBUF_VERSION="1.9.0" \
+    GRPC_GATEWAY_PROTOBUF_VERSION="1.9.2" \
     MOCKGEN_VERSION="1.3.1" \
     GOLANGCI_LINT_VERSION="1.16.0"
 
@@ -38,10 +37,8 @@ RUN GO111MODULE=on go get \
     github.com/gogo/protobuf/protoc-gen-gogoslick@v${GOGO_PROTOBUF_VERSION} \
     && mv /go/bin/protoc-gen-* /usr/local/bin/
 
-## `protoc-gen-validate` binary
 ## `protoc-gen-govalidators` binary
 RUN GO111MODULE=on go get \
-    github.com/envoyproxy/protoc-gen-validate@v${VALIDATE_PROTOBUF_VERSION} \
     github.com/mwitkow/go-proto-validators/protoc-gen-govalidators@${VALIDATORS_PROTOBUF_VERSION} \
     && mv /go/bin/protoc-gen-* /usr/local/bin/
 
