@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+.SHELLFLAGS := -eo pipefail -c
 
 ifeq ("$(wildcard project)","")
 $(error project directory doesn't exist)
