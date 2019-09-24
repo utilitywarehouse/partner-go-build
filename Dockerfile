@@ -1,4 +1,4 @@
-FROM golang:1.12.4
+FROM golang:1.13.0
 
 ENV DOCKER_VERSION="18.09.5" \
     PROTOBUF_VERSION="3.7.0" \
@@ -76,3 +76,5 @@ WORKDIR /build
 ADD ./Makefile .
 ADD ./Dockerfile.project .
 RUN mkdir project && mkdir bin
+
+ENV GOPRIVATE="github.com/utilitywarehouse/*"
