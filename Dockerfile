@@ -1,4 +1,4 @@
-FROM golang:1.13.0
+FROM golang:1.13.1
 
 ENV DOCKER_VERSION="18.09.5" \
     PROTOBUF_VERSION="3.7.0" \
