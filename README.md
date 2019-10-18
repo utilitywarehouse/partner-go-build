@@ -1,5 +1,7 @@
 # partner-go-build
 
+## [Build status](https://quay.io/repository/utilitywarehouse/partner-go-build)
+
 Base Docker image that contains all the necessary binaries for building Go services.
 
 ## Usage
