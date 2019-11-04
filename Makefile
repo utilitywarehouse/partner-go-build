@@ -34,7 +34,7 @@ DOCKER_BASE_NAME ?= $(DOCKER_REGISTRY)/$(DOCKER_NAMESPACE)
 ifeq ($(GIT_BRANCH), master)
     DOCKER_TAG := latest
 else
-    DOCKER_TAG := $(GIT_BRANCH)
+    DOCKER_TAG := $(subst :,-,$(subst /,-,$(GIT_BRANCH)))
 endif
 
 LDFLAGS := -ldflags '-s \
