@@ -42,7 +42,12 @@ LDFLAGS := -ldflags '-s \
 	-X "github.com/utilitywarehouse/partner-pkg/meta.ApplicationDescription=$(APP_DESCRIPTION)" \
 	-X "github.com/utilitywarehouse/partner-pkg/meta.GitSummary=$(GIT_SUMMARY)" \
 	-X "github.com/utilitywarehouse/partner-pkg/meta.GitBranch=$(GIT_BRANCH)" \
-	-X "github.com/utilitywarehouse/partner-pkg/meta.BuildStamp=$(BUILD_STAMP)"'
+	-X "github.com/utilitywarehouse/partner-pkg/meta.BuildStamp=$(BUILD_STAMP)" \
+	-X "github.com/utilitywarehouse/partner-mono/pkg/meta.ApplicationName=$(APP_NAME)" \
+	-X "github.com/utilitywarehouse/partner-mono/pkg/meta.ApplicationDescription=$(APP_DESCRIPTION)" \
+	-X "github.com/utilitywarehouse/partner-mono/pkg/meta.GitSummary=$(GIT_SUMMARY)" \
+	-X "github.com/utilitywarehouse/partner-mono/pkg/meta.GitBranch=$(GIT_BRANCH)" \
+	-X "github.com/utilitywarehouse/partner-mono/pkg/meta.BuildStamp=$(BUILD_STAMP)"'
 
 # --------------------------------------------------------------------------------------------------
 # Setup Tasks
